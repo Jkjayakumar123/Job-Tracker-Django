@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Django
+db.sqlite3
+.env
+*.log
+
+# Migrations cache
+*/migrations/__pycache__/
+
+# Virtual environment
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Secrets (if any later)
+token.pickle
+credentials.json

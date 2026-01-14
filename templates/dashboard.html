@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Tracker</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<h2>Job Application Tracker</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <input name="company" placeholder="Company" required>
+  <input name="role" placeholder="Role" required>
+  <select name="status">
+    <option>Applied</option>
+    <option>Interview</option>
+    <option>Offer</option>
+    <option>Rejected</option>
+  </select>
+  <button type="submit">Add Job</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Role</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for job in jobs %}
+    <tr>
+      <td data-label="Company">{{ job.company }}</td>
+      <td data-label="Role">{{ job.role }}</td>
+      <td data-label="Status">{{ job.status }}</td>
+      <td data-label="Actions">
+        <a href="/edit/{{ job.id }}">Edit</a> |
+        <a href="/delete/{{ job.id }}">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

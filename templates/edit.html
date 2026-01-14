@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Job</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<h2>Edit Job</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  <input name="company" value="{{ job.company }}" required>
+  <input name="role" value="{{ job.role }}" required>
+  <select name="status">
+    <option selected>{{ job.status }}</option>
+    <option>Applied</option>
+    <option>Interview</option>
+    <option>Offer</option>
+    <option>Rejected</option>
+  </select>
+  <button type="submit">Update</button>
+</form>
+
+</body>
+</html>
